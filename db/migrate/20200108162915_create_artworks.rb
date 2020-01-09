@@ -1,7 +1,6 @@
-class CreateWorks < ActiveRecord::Migration[6.0]
+class CreateArtworks < ActiveRecord::Migration[6.0]
   def change
-    create_table :works do |t|
-      t.references :search, null: false, foreign_key: true
+    create_table :artworks do |t|
       t.string :img_urls
       t.string :title
       t.string :geography
@@ -9,7 +8,6 @@ class CreateWorks < ActiveRecord::Migration[6.0]
       t.string :dates
       t.string :description
       t.string :department
-      t.boolean :sent
 
       t.timestamps
     end
