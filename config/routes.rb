@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       resources :users
       resources :favorites
       resources :searches
-      resources :works
+      resources :artworks
+      resources :results
     end
     
   end

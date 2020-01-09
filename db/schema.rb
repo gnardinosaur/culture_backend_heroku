@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_162915) do
+ActiveRecord::Schema.define(version: 2020_01_09_173932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "artworks", force: :cascade do |t|
     t.string "img_urls"
     t.string "title"
     t.string "geography"
@@ -26,7 +25,25 @@ ActiveRecord::Schema.define(version: 2020_01_08_162915) do
     t.string "department"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "artwork_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artwork_id"], name: "index_favorites_on_artwork_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.bigint "artwork_id", null: false
+    t.bigint "search_id", null: false
+    t.boolean "sent"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artwork_id"], name: "index_results_on_artwork_id"
+    t.index ["search_id"], name: "index_results_on_search_id"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -50,22 +67,9 @@ ActiveRecord::Schema.define(version: 2020_01_08_162915) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "works", force: :cascade do |t|
-    t.bigint "search_id", null: false
-    t.string "img_urls"
-    t.string "title"
-    t.string "geography"
-    t.string "artist"
-    t.string "dates"
-    t.string "description"
-    t.string "department"
-    t.boolean "sent"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["search_id"], name: "index_works_on_search_id"
-  end
-
+  add_foreign_key "favorites", "artworks"
   add_foreign_key "favorites", "users"
+  add_foreign_key "results", "artworks"
+  add_foreign_key "results", "searches"
   add_foreign_key "searches", "users"
-  add_foreign_key "works", "searches"
 end
