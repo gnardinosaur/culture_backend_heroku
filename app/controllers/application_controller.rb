@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   before_action :authorized
   
   def encode_token(payload)
-    JWT.encode(payload, 'cuLtur3_@pP')
+    JWT.encode(payload, ENV['JWT_SIGNATURE'])
   end 
 
   def auth_header 
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
     if auth_header
       token = auth_header.split(' ')[1]
       begin
-        JWT.decode(token, 'cuLtur3_@pP', true, algorithm: 'HS256')
+        JWT.decode(token, ENV['JWT_SIGNATURE'], true, algorithm: 'HS256')
       rescue JWT::DecodeError
         nil
       end
