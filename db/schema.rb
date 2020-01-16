@@ -16,15 +16,27 @@ ActiveRecord::Schema.define(version: 2020_01_09_173932) do
   enable_extension "plpgsql"
 
   create_table "artworks", force: :cascade do |t|
-    t.string "img_urls"
+    t.integer "met_id"
+    t.string "img_url"
     t.string "title"
-    t.string "geography"
+    t.string "culture"
     t.string "artist"
-    t.string "dates"
+    t.string "date"
     t.string "description"
     t.string "department"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.bigint "artwork_id", null: false
+    t.bigint "schedule_id", null: false
+    t.boolean "sent"
+    t.datetime "send_date_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artwork_id"], name: "index_emails_on_artwork_id"
+    t.index ["schedule_id"], name: "index_emails_on_schedule_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -36,24 +48,16 @@ ActiveRecord::Schema.define(version: 2020_01_09_173932) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "results", force: :cascade do |t|
-    t.bigint "artwork_id", null: false
-    t.bigint "search_id", null: false
-    t.boolean "sent"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["artwork_id"], name: "index_results_on_artwork_id"
-    t.index ["search_id"], name: "index_results_on_search_id"
-  end
-
-  create_table "searches", force: :cascade do |t|
+  create_table "schedules", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "department"
     t.boolean "highlight"
     t.string "dates"
+    t.integer "days"
+    t.integer "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_searches_on_user_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,9 +71,9 @@ ActiveRecord::Schema.define(version: 2020_01_09_173932) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "emails", "artworks"
+  add_foreign_key "emails", "schedules"
   add_foreign_key "favorites", "artworks"
   add_foreign_key "favorites", "users"
-  add_foreign_key "results", "artworks"
-  add_foreign_key "results", "searches"
-  add_foreign_key "searches", "users"
+  add_foreign_key "schedules", "users"
 end
