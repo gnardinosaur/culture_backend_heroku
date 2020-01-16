@@ -1,7 +1,7 @@
-class Artwork < ApplicationRecord
+class ArtWork < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
-  has_many :results
-  has_many :searches, through: :results
+  has_many :emails
+  has_many :schedules, through: :emails
 
 end

@@ -1,11 +1,12 @@
 class CreateArtworks < ActiveRecord::Migration[6.0]
   def change
     create_table :artworks do |t|
-      t.string :img_urls
+      t.integer :met_id
+      t.string :img_url
       t.string :title
-      t.string :geography
+      t.string :culture
       t.string :artist
-      t.string :dates
+      t.string :date
       t.string :description
       t.string :department
 

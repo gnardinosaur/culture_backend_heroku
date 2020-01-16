@@ -6,9 +6,9 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       resources :favorites
-      resources :searches
+      resources :schedules
       resources :artworks
-      resources :results
+      resources :emails
     end
     
   end
