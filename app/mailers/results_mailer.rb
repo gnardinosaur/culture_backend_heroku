@@ -1,0 +1,2 @@
+class ResultsMailer < ApplicationMailer
+end
