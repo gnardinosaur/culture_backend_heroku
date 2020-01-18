@@ -1,4 +1,4 @@
-class ResultsMailer < ApplicationMailer
+class EmailsMailer < ApplicationMailer
   default from: 'metartmailer@gmail.com'
 
   def test
