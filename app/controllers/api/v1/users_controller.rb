@@ -26,6 +26,12 @@ class Api::V1::UsersController < ApplicationController
     render json: @artworks
   end 
 
+  def scheduled_emails
+    @user = User.find(params[:id])
+    @scheduled_emails = @user.schedules 
+    render json: @scheduled_emails
+  end
+
 
   private 
 
