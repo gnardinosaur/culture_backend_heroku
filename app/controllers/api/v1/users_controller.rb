@@ -20,10 +20,10 @@ class Api::V1::UsersController < ApplicationController
     render json: @users 
   end
 
-  def user_favorites
+  def favorite_works
     @user = User.find(params[:id])
-    @favorites = @user.favorites
-    render json: @favorites
+    @artworks = @user.artworks
+    render json: @artworks
   end 
 
 
