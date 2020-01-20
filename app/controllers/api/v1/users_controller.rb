@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index, :user_favorites]
+  skip_before_action :authorized, only: [:create, :index, :favorite_works]
   
   def create 
     @user = User.create(user_params)
@@ -23,7 +23,8 @@ class Api::V1::UsersController < ApplicationController
   def favorite_works
     @user = User.find(params[:id])
     @artworks = @user.artworks
-    render json: @artworks
+    @favorite_ids = @user.favorites.ids
+    render json: { artworks: @artworks, favorite_ids: @favorite_ids }
   end 
 
   def scheduled_emails
