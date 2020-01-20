@@ -26,4 +26,10 @@ class Api::V1::SchedulesController < ApplicationController
     render json: @schedules
   end
 
+  def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    render json: @schedule 
+  end 
+
 end

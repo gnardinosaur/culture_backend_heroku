@@ -3,6 +3,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: { case_sensitive: false }
   has_many :favorites
   has_many :artworks, through: :favorites
-  has_many :searches
-  has_many :results, through: :searches
+  has_many :schedules
+  has_many :results, through: :schedules
 end
