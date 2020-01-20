@@ -11,5 +11,11 @@ class Api::V1::FavoritesController < ApplicationController
     @favorite = Favorite.create(user_id: params[:user_id], artwork_id: @artwork.id)
     render json: @favorite 
   end 
-  
+
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+    render json: @favorite 
+  end
+
 end
