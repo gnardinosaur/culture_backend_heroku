@@ -1,0 +1,31 @@
+Heyo <%= @user.f_name %>
+===============================================
+
+This is as Met Art Mailer test !!!
+ 
+Have a killer day!
+
+
+Good Morning <%= @user.f_name %>!
+
+===============================================
+
+Here's your daily inspiring piece of art -
+
+<%= @artwork.title %>
+    
+<% if @artwork.artist %>
+  <%= @artwork.artist%>
+<% else %>
+  <%= @artwork.culture%>
+<% end %>
+    
+<%= @artwork.date%>
+
+<%= @artwork.description%>
+
+<%= @artwork.img_url %>
+
+Have a killer day!
+
+Nick @ Culture App

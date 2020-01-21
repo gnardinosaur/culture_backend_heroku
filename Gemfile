@@ -32,6 +32,9 @@ gem 'rack-cors'
 # Hides JWT signature from GitHub
 gem 'dotenv-rails'
 
+# Helps with cron to easily write and schedule daily email rake tasks 
+gem 'whenever', require: false
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

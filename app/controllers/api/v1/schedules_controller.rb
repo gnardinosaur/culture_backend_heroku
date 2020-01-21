@@ -12,13 +12,14 @@ class Api::V1::SchedulesController < ApplicationController
       @date = @date.change({ hour: params[:time], min: 0, sec: 0 })
       @datetime_arr.push(@date)
     end 
-    @test_arr = []
-    #create artwork and then email for each artwork
+    @artworks_arr = []
+    #create Artwork and then Email for each artwork
     params[:art].each_with_index do |art, index|
-      @artwork = Artwork.create(met_id: art[:ID], img_url: art[:img], title: art[:title], culture: art[:culture], artist: art[:artist], date: art[:date], description: art[:description].join(","), department: art[:department])
-      @test_arr.push(@artwork)
+      @artwork = Artwork.find_or_create_by(met_id: art[:ID], img_url: art[:img], title: art[:title], culture: art[:culture], artist: art[:artist], date: art[:date], description: art[:description].join(","), department: art[:department])
+      @artworks_arr.push(@artwork)
       Email.create(artwork_id: @artwork.id, schedule_id: @schedule.id, sent: false, send_date_time: @datetime_arr[index])    
     end
+    render json: @artworks_arr[0]
   end 
 
   def index 

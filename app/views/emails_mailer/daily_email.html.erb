@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> Good Morning <%= @user.f_name %>!</h1>
+    <h3>Here's your daily inspiring piece of art -</h3>
+    
+    <h4><%= @artwork.title %></h4>
+    
+    <% if @artwork.artist %>
+      <h5><%= @artwork.artist%></h5>
+    <% else %>
+      <h5><%= @artwork.culture%></h5>
+    <% end %>
+    
+    <h6><%= @artwork.date%></h6>
+    
+    <p><%= @artwork.description%></p>
+    
+    <img src=<%= @artwork.img_url %> width="300">
+    
+    <p>Have a killer day!</p>
+    <h4>Nick @ Culture App</h4>
+  </body>
+</html>
