@@ -4,5 +4,5 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :artworks, through: :favorites
   has_many :schedules
-  has_many :results, through: :schedules
+  has_many :emails, through: :schedules
 end
