@@ -1,8 +1,8 @@
-# Preview all emails at http://localhost:3000/rails/mailers/results_mailer
+# Preview all emails at http://localhost:3000/rails/mailers/emails_mailer
 class EmailsMailerPreview < ActionMailer::Preview
   def welcome_email
     @user = User.find(1)
-    @artwork = Artwork.find(4)
+    @artwork = Artwork.find(19)
     @search_params = {
       department: "blah",
       dates: "1 - 47",
