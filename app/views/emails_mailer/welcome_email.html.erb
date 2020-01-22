@@ -25,10 +25,7 @@
     
     <img src=<%= @artwork.img_url %> width="300">
   
-    <% @artwork.description.split(".,").each do |el| %>
-      <p><%= el %></p>
-    <% end %>
-
+    <p><%= @artwork.description.html_safe %></p>
   
     <p>Have a killer day ✌️!</p>
     <h4>Nick @ Culture App</h4>

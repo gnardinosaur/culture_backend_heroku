@@ -2,7 +2,7 @@
 class EmailsMailerPreview < ActionMailer::Preview
   def welcome_email
     @user = User.find(1)
-    @artwork = Artwork.find(19)
+    @artwork = Artwork.find(139)
     @search_params = {
       department: "blah",
       dates: "1 - 47",
