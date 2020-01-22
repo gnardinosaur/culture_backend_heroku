@@ -8,7 +8,7 @@
     
     <h3>Thank you for signing up with Culture App.</h3>
 
-    <p>Every morning at <%= @schedule_info[:time] %>am  for <%= @schedule_info[:numDays] %> days you'll receive an email with an inspiring peice of art.</p>
+    <p>Every morning at <%= @schedule_info[:time] %>am  for <%= @schedule_info[:numDays] %> days you'll receive an email with an inspiring piece of art.</p>
         
     <h3>And here's your first work -</h3>
     
@@ -26,12 +26,35 @@
   
     <p><%= @artwork.description %></p>
 
-    <h3>Search Details -</h3>
-    Department - <h5><%= @search_info[:department] %></h5>
-    Dates - <h5><%= @search_info[:dates] %></h5>
-    Collection Highlight? - <h5><%= @search_info[:highlight] %></h5>
+    <h3 >Search Details -</h3>
+    <ul>
+      <li>Department -</li>
+        <ul>
+          <% if @search_info[:department] %>
+            <li><h4><%= @search_info[:department] %></h4></li>
+          <% else %>
+            <li><h4>No Department Selected</h4></li>
+          <% end %>
+        </ul>
+      <li>Dates -</li>
+        <ul>
+          <% if @search_info[:dates] %>
+            <li><h4><%= @search_info[:dates] %></h4></li>
+          <% else %>
+            <li><h4>No Dates Selected</h4></li>
+          <% end %>
+        </ul>
+      <li>Collection Highlight? -</li>
+        <ul>
+          <% if @search_info[:highlight] %>
+              <li><h4>Yes</h4></li>
+            <% else %>
+              <li><h4>No</h4></li>
+            <% end %>
+        </ul>
+    </ul>
     
-    <p>Have a killer day ✌️!</p>
+    <p color="red">Have a killer day ✌️!</p>
     <h4>Nick @ Culture App</h4>
   </body>
 </html>

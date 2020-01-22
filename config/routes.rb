@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/users/:id/scheduled_emails', to: 'users#scheduled_emails'
       get '/profile', to: 'users#profile'
       post '/login', to: 'auth#create'
+      get '/auto_login', to: 'auth#auto_login'
       resources :favorites
       resources :schedules
       resources :artworks
