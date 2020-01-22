@@ -1,9 +1,19 @@
 # Preview all emails at http://localhost:3000/rails/mailers/results_mailer
 class EmailsMailerPreview < ActionMailer::Preview
-  def create
-    @user = User.find_by(id: 6)
+  def welcome_email
+    @user = User.find(1)
+    @artwork = Artwork.find(4)
+    @search_params = {
+      department: "blah",
+      dates: "1 - 47",
+      highlight: false
+    }
+    @schedule_params = {
+      time: 11,
+      numDays: 33
+    }
     if @user.valid?
-      EmailsMailer.with(user: @user).test.deliver_now
+      EmailsMailer.with(user: @user, artwork: @artwork, search_info: @search_params, schedule_info: @schedule_params).welcome_email
     end
-  end 
+  end
 end
