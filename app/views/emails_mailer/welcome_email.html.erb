@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> Hi 👋 <%= @user.f_name %> !</h1>
+    
+    <h3>Thank you for signing up with Culture App.</h3>
+
+    <p>Every morning at <%= @schedule_info[:time] %>am  for <%= @schedule_info[:numDays] %> days you'll receive an email with an inspiring peice of art.</p>
+        
+    <h3>And here's your first work -</h3>
+    
+    <h4><%= @artwork.title %></h4>
+    
+    <% if @artwork.artist %>
+      <h5><%= @artwork.artist %></h5>
+    <% else %>
+      <h5><%= @artwork.culture %></h5>
+    <% end %>
+    
+    <h6><%= @artwork.date %></h6>
+    
+    <img src=<%= @artwork.img_url %> width="300">
+  
+    <p><%= @artwork.description %></p>
+
+    <h3>Search Details -</h3>
+    Department - <h5><%= @search_info[:department] %></h5>
+    Dates - <h5><%= @search_info[:dates] %></h5>
+    Collection Highlight? - <h5><%= @search_info[:highlight] %></h5>
+    
+    <p>Have a killer day ✌️!</p>
+    <h4>Nick @ Culture App</h4>
+  </body>
+</html>
