@@ -1,24 +1,22 @@
-# README
+# Culture.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application to find and learn about works of art in The Metrolpolitan Museum's collection. 
 
-Things you may want to cover:
+## 2(ish) Minute Demo -
+[YouTube](https://www.youtube.com/watch?v=5vEtmaPZX44&feature=youtu.be)
 
-* Ruby version
+##  Gems -  
+* [bcrypt](https://github.com/codahale/bcrypt-ruby)
+* [jwt](https://github.com/jwt/ruby-jwt)
 
-* System dependencies
+## The Frontend -
+There is a vanilla JS/React frontend for this project, located in [this](https://github.com/gnardinosaur/culture_frontend) repo. 
 
-* Configuration
+## Additional Notes -
+This was my final project for Flatiron School's Software Engineering immersive program. The main goal was to use new technologies I had not yet utilized and build an application that would email a user upon some action.
 
-* Database creation
+I originally intended for the application to send users a daily email but ran into some hurdles with cron and the Mac OS I'm running, Catalina. 
 
-* Database initialization
+It took me roughly four days to ideate and draw out the UI, and about a week and half to build.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
