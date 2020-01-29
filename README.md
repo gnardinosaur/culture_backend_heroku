@@ -9,7 +9,7 @@ An application to find and learn about works of art in The Metrolpolitan Museum'
 * [bcrypt](https://github.com/codahale/bcrypt-ruby)
 * [jwt](https://github.com/jwt/ruby-jwt)
 
-## The Frontend -
+## Where's The Frontend !? -
 There is a vanilla JS/React frontend for this project, located in [this](https://github.com/gnardinosaur/culture_frontend) repo. 
 
 ## Additional Notes -
